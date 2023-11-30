@@ -1,5 +1,6 @@
-const express = require('express');
-const apiRoutes = require('./routes/apiRoutes');
+import express from 'express';
+import apiRoutes from './routes/apiRoutes.js'; // Ensure apiRoutes is exported correctly in apiRoutes.ts
+
 const app = express();
 const port = 3001; // Different from React's port
 

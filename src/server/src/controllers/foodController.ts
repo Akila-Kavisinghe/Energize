@@ -1,7 +1,9 @@
-const foodModel = require("../db/foodModel");
+import fetch from 'node-fetch'
+import { Request, Response } from 'express';
+import * as foodModel from '../db/foodModel.js';
 
 const foodController = {
-  getNutritionInfo: async (req, res) => {
+  getNutritionInfo: async (req: Request, res: Response) => {
     const { barcode, grams } = req.body;
 
     try {
@@ -11,7 +13,7 @@ const foodController = {
         const response = await fetch(
           `https://world.openfoodfacts.org/api/v2/product/${barcode}`
         );
-        const data = await response.json();
+        const data: any = await response.json() as any;
 
         if (data.status !== 1) {
           return res.status(404).send("Product not found");
@@ -27,13 +29,11 @@ const foodController = {
             carbohydrates_per_100g: nutriments["carbohydrates_100g"],
             fat_per_100g: nutriments["fat_100g"],
           },
+          barcode
         };
 
         // Add product info to the database if it's not already there
-        await foodModel.addProductToDb({
-          ...productInfo,
-          barcode
-        });
+        await foodModel.addProductToDb(productInfo);
       }
 
       const nutrimentsCalculated = calculateNutrition(productInfo, grams);
@@ -50,7 +50,7 @@ const foodController = {
   },
 };
 
-const calculateNutrition = (productInfo, grams) => {
+const calculateNutrition = (productInfo: any, grams: number) => {
   const factor = grams / 100;
 
   return {
@@ -61,4 +61,4 @@ const calculateNutrition = (productInfo, grams) => {
   };
 };
 
-module.exports = foodController;
+export default foodController;
