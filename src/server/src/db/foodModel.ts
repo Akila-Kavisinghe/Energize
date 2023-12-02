@@ -3,7 +3,7 @@ import { Food } from "../types/food.js"
 
 async function getProductFromDb(barcode: string): Promise<Food | null> {
   return new Promise((resolve, reject) => {
-    const query = "SELECT * FROM foods WHERE barcode = ?";
+    const query = "SELECT name, calories_per_100g, protein_per_100g, carbohydrates_per_100g, fat_per_100g, barcode FROM foods WHERE barcode = ?";
     pool.query(query, [barcode], (err, results: any) => {
       if (err) {
         reject(err);
