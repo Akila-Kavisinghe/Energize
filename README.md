@@ -38,3 +38,8 @@ On the back end, I've ventured out of my comfort zone with **TypeScript**, **MyS
 **Express**, with its minimalist and flexible nature, forms the backbone of my server-side logic, integrating seamlessly with **TypeScript** and **MySQL**. 
 
 This stack was chosen not just for its strengths but for how these technologies synergistically create a robust, scalable, and efficient back-end system, ready to handle complex operations and data management with ease.
+
+# KANBAN BOARD
+
+[ENERGIZE Figma File](https://www.figma.com/file/I2atWfQzoG2sMBM3DoYZYc/ENERGIZE?type=whiteboard&node-id=0%3A1&t=mLbYpB3VFiloFlNf-1)
+
