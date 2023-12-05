@@ -1,41 +1,37 @@
 import { Request, Response } from "express";
-import { calculateNutrition } from "../utils/calculateNutrition.js";
 import { ProductService } from "../services/ProductService.js";
 
 const productService = new ProductService();
 
 const foodController = {
-  getNutritionInfo: async (req: Request, res: Response) => {
-    const { barcode, grams } = req.body;
+  getProduct: async (req: Request, res: Response) => {
+    const { barcode } = req.body;
+    const allowDatabaseWrites = req.headers['allowdatabasewrites'] === 'true';
 
     try {
-      let food = await productService.getProductFromDb(barcode);
+      // Retrieve the product from the database
+      let product = await productService.retrieveProductByBarcode(barcode);
 
-      if (!food) {
-        const productDetails = await productService.fetchProductDetails(barcode);
+      // If not in the database, get it from the API
+      if (!product) {
+        product = await productService.retrieveProductFromAPI(barcode);
 
-        if (!productDetails || productDetails.status !== 1) {
+        if (!product) {
           return res.status(404).send("Product not found");
         }
 
-        // Add product info to the database if it's not already there
-        await productService.addProductToDatabase(productDetails, barcode);
+        // If the product is fetched from the API and database writes are allowed, add it to the database
+        if (allowDatabaseWrites) {
+          await productService.saveNewProduct(product);
+        }
       }
 
-      const nutrimentsCalculated = food
-        ? calculateNutrition(food, grams)
-        : null;
-
-      // Send the calculated nutrition data
-      res.json({
-        name: food?.name,
-        date: new Date(),
-        ...nutrimentsCalculated,
-      });
+      res.json(product);
     } catch (error) {
+      console.error(error);
       res.status(500).send("Error processing the request");
     }
-  },
+  }
 };
 
 export default foodController;

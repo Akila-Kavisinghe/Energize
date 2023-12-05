@@ -4,8 +4,8 @@ import foodController from '../controllers/foodController.js';
 
 const router = express.Router();
 
-router.post('/nutrition-info', async (req: Request, res: Response) => {
-  await foodController.getNutritionInfo(req, res);
+router.post('/getProduct', async (req: Request, res: Response) => {
+  await foodController.getProduct(req, res);
 });
 
 export default router;

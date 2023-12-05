@@ -1,7 +1,7 @@
 import pool from "./database.js"; // Import your database pool
 import { Food } from "../types/food.js"
 
-async function getProductFromDb(barcode: string): Promise<Food | null> {
+async function queryProductByBarcode(barcode: string): Promise<Food | null> {
   return new Promise((resolve, reject) => {
     const query = "SELECT name, calories_per_100g, protein_per_100g, carbohydrates_per_100g, fat_per_100g, barcode FROM foods WHERE barcode = ?";
     pool.query(query, [barcode], (err, results: any) => {
@@ -50,4 +50,4 @@ async function addProductToDb(food: Food): Promise<number> {
   });
 }
 
-export { getProductFromDb, addProductToDb };
+export { queryProductByBarcode, addProductToDb };
