@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Energize
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![JavaScript](https://skillicons.dev/icons?i=js&theme=light) ![React](https://skillicons.dev/icons?i=react&theme=light) ![TailwindCSS](https://skillicons.dev/icons?i=tailwind&theme=light) ![TypeScript](https://skillicons.dev/icons?i=ts&theme=light) ![MySQL](https://skillicons.dev/icons?i=mysql&theme=light) ![Express](https://skillicons.dev/icons?i=express&theme=light)
 
-## Available Scripts
+Energize is my brainchild, a testament to my full-stack development skills. At its core, it utilizes a monolithic architecture, a strategic choice given its current scope. This approach streamlines development and debugging for a smaller-scale project. However, I'm fully prepared to transition to a microservices architecture when scalability becomes a priority, ensuring that Energize can grow and evolve as needed.
 
-In the project directory, you can run:
+## Tech Stack
+Here’s the breakdown:
 
-### `npm start`
+### Front End
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **JavaScript, React, TailwindCSS**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    ![JavaScript](https://skillicons.dev/icons?i=js&theme=light) ![React](https://skillicons.dev/icons?i=react&theme=light) ![TailwindCSS](https://skillicons.dev/icons?i=tailwind&theme=light)
 
-### `npm test`
+For the front end, I've chosen **JavaScript**, **React**, and **Tailwind CSS**. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**JavaScript** is the bedrock of web interactivity, and its asynchronous nature is ideal for real-time applications like nutrition and exercise trackers. 
 
-### `npm run build`
+**React’s** component-based architecture ensures a seamless user experience with efficient rendering and state management, crucial for interactive elements like progress trackers and dynamic forms. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**TailwindCSS** is the cherry on top, offering a utility-first approach for rapid, responsive UI development. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This combination not only boosts development efficiency but also ensures a high-performance, user-friendly interface.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Back End
 
-### `npm run eject`
+- **TypeScript, MySQL, Express**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ![TypeScript](https://skillicons.dev/icons?i=ts&theme=light) ![MySQL](https://skillicons.dev/icons?i=mysql&theme=light) ![Express](https://skillicons.dev/icons?i=express&theme=light)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+On the back end, I've ventured out of my comfort zone with **TypeScript**, **MySQL**, and **Express**. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**TypeScript** offers the robustness of type safety and aligns well with my front-end React code, enhancing maintainability and reducing bugs.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**MySQL** is my choice for a relational database because of its reliability and scalability, key for managing detailed user data and exercise logs.
 
-## Learn More
+**Express**, with its minimalist and flexible nature, forms the backbone of my server-side logic, integrating seamlessly with **TypeScript** and **MySQL**. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This stack was chosen not just for its strengths but for how these technologies synergistically create a robust, scalable, and efficient back-end system, ready to handle complex operations and data management with ease.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# KANBAN BOARD
 
-### Code Splitting
+[ENERGIZE Figma File](https://www.figma.com/file/I2atWfQzoG2sMBM3DoYZYc/ENERGIZE?type=whiteboard&node-id=0%3A1&t=mLbYpB3VFiloFlNf-1)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
