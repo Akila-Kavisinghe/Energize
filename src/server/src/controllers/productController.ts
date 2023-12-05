@@ -3,7 +3,7 @@ import { ProductService } from "../services/ProductService.js";
 
 const productService = new ProductService();
 
-const foodController = {
+const productController = {
   getProduct: async (req: Request, res: Response) => {
     const { barcode } = req.body;
     const allowDatabaseWrites = req.headers['allowdatabasewrites'] === 'true';
@@ -34,4 +34,4 @@ const foodController = {
   }
 };
 
-export default foodController;
+export default productController;

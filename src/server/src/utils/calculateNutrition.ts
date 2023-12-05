@@ -1,12 +1,12 @@
-import { Food } from "../types/food";
+import { Product } from "../types/product";
 
-export const calculateNutrition = (food: Food, grams: number) => {
+export const calculateNutrition = (product: Product, grams: number) => {
   const factor = grams / 100;
 
   return {
-    calories: food.calories_per_100g * factor,
-    protein: food.protein_per_100g * factor,
-    carbs: food.carbohydrates_per_100g * factor,
-    fat: food.fat_per_100g * factor,
+    calories: product.calories_per_100g * factor,
+    protein: product.protein_per_100g * factor,
+    carbs: product.carbohydrates_per_100g * factor,
+    fat: product.fat_per_100g * factor,
   };
 };
