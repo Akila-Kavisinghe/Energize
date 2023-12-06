@@ -1,10 +1,10 @@
 import { calculateNutrition } from "../../src/utils/calculateNutrition";
-import { Food } from "../../src/types/food";
+import { Product } from "../../src/types/product";
 
 describe("calculateNutrition", () => {
   it("should correctly calculate nutrition based on grams", () => {
-    const food: Food = {
-      name: "Some food",
+    const product: Product = {
+      name: "Some product",
       calories_per_100g: 200,
       protein_per_100g: 10,
       carbohydrates_per_100g: 20,
@@ -13,7 +13,7 @@ describe("calculateNutrition", () => {
     };
 
     const grams = 250; // Testing with 250 grams
-    const result = calculateNutrition(food, grams);
+    const result = calculateNutrition(product, grams);
 
     expect(result).toEqual({
       calories: 500, // 200 * 2.5

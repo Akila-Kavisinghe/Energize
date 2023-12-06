@@ -5,10 +5,10 @@ const productService = new ProductService();
 
 const productController = {
   getProduct: async (req: Request, res: Response) => {
-    const { barcode } = req.body;
-    const allowDatabaseWrites = req.headers['allowdatabasewrites'] === 'true';
-
     try {
+      const { barcode } = req.body;
+      const allowDatabaseWrites = req.headers["allowdatabasewrites"] === "true";
+
       // Retrieve the product from the database
       let product = await productService.retrieveProductByBarcode(barcode);
 
@@ -28,10 +28,10 @@ const productController = {
 
       res.json(product);
     } catch (error) {
-      console.error(error);
+      console.error(`Error in productController: getProduct: ${error}`);
       res.status(500).send("Error processing the request");
     }
-  }
+  },
 };
 
 export default productController;
