@@ -4,7 +4,6 @@ import { ProductService } from "../../src/services/ProductService";
 import { Product } from "../../src/types/product";
 import { Request, Response } from "express";
 
-// Mock the ProductService module
 jest.mock("../../src/services/ProductService");
 
 describe("Product Controller", () => {
@@ -92,7 +91,7 @@ describe("Product Controller", () => {
       .mockResolvedValueOnce(mockApiProduct);
     const saveNewProductSpy = jest
       .spyOn(ProductService.prototype, "saveNewProduct")
-      .mockResolvedValueOnce(1);
+      .mockResolvedValueOnce("UUID");
 
     // Call the getProduct method of the controller
     await productController.getProduct(req, res);

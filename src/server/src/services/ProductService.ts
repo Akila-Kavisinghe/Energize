@@ -28,7 +28,7 @@ export class ProductService {
     return productRepo.queryProductByBarcode(barcode);
   }
 
-  async saveNewProduct(product: Product) : Promise<number | null> {
+  async saveNewProduct(product: Product) : Promise<String | null> {
     return productRepo.addProductToDb(product);
   }
 }

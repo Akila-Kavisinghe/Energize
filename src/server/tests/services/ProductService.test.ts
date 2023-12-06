@@ -77,11 +77,11 @@ describe('ProductService', () => {
     };
 
     it('should save a new product to the database', async () => {
-      jest.spyOn(productRepo, 'addProductToDb').mockResolvedValueOnce(1);
+      jest.spyOn(productRepo, 'addProductToDb').mockResolvedValueOnce("UUID");
 
       const insertId = await productService.saveNewProduct(mockProduct);
       expect(productRepo.addProductToDb).toHaveBeenCalledWith(mockProduct);
-      expect(insertId).toEqual(1);
+      expect(insertId).toEqual("UUID");
     });
   });
 });

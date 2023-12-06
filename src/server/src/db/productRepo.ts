@@ -1,5 +1,6 @@
 import pool from "./database.js"; // Import your database pool
 import { Product } from "../types/product.js";
+import { v4 as uuidv4 } from 'uuid';
 
 async function queryProductByBarcode(barcode: string): Promise<Product | null> {
   return new Promise((resolve, reject) => {
@@ -28,12 +29,14 @@ async function queryProductByBarcode(barcode: string): Promise<Product | null> {
   });
 }
 
-async function addProductToDb(product: Product): Promise<number> {
+async function addProductToDb(product: Product): Promise<String> {
   return new Promise((resolve, reject) => {
     try {
-      const query = `INSERT INTO products (name, protein_per_100g, carbohydrates_per_100g, fat_per_100g, calories_per_100g, barcode) VALUES (?, ?, ?, ?, ?, ?)`;
+      const productId = uuidv4()
+      const query = `INSERT INTO products (product_id, name, protein_per_100g, carbohydrates_per_100g, fat_per_100g, calories_per_100g, barcode) VALUES (?, ?, ?, ?, ?, ?)`;
 
       const values = [
+        productId,
         product.name,
         product.protein_per_100g,
         product.carbohydrates_per_100g,
@@ -43,7 +46,11 @@ async function addProductToDb(product: Product): Promise<number> {
       ];
 
       pool.query(query, values, (err, results: any) => {
-        resolve(results.insertId); // Resolves with the ID of the inserted product
+        if (err) {
+          reject(err);
+        } else {
+          resolve(productId); // Resolves with the UUID of the inserted product
+        }
       });
     } catch (error) {
       console.error(`Error in productRepo: addProductToDb: ${error}`);
