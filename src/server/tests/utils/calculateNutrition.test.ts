@@ -4,6 +4,7 @@ import { Product } from "../../src/types/product";
 describe("calculateNutrition", () => {
   it("should correctly calculate nutrition based on grams", () => {
     const product: Product = {
+      productId: "someid",
       name: "Some product",
       calories_per_100g: 200,
       protein_per_100g: 10,
@@ -18,7 +19,7 @@ describe("calculateNutrition", () => {
     expect(result).toEqual({
       calories: 500, // 200 * 2.5
       protein: 25, // 10 * 2.5
-      carbs: 50, // 20 * 2.5
+      carbohydrates: 50, // 20 * 2.5
       fat: 12.5, // 5 * 2.5
     });
   });

@@ -13,10 +13,11 @@ describe("Product Controller", () => {
 
   beforeEach(() => {
     // Reset mocks before each test
-    jest.restoreAllMocks();
+    jest.resetAllMocks();
 
     // Create test data based on the Product interface
     mockProduct = {
+      productId: "test-product-id",
       name: "Test Product",
       calories_per_100g: 250,
       protein_per_100g: 10,
@@ -26,7 +27,8 @@ describe("Product Controller", () => {
     };
 
     req = {
-      body: { barcode: mockProduct.barcode },
+      body: {},
+      params: {},
       headers: {},
     } as unknown as Request;
     res = {
@@ -42,8 +44,10 @@ describe("Product Controller", () => {
       .spyOn(ProductService.prototype, "retrieveProductByBarcode")
       .mockResolvedValue(mockProduct);
 
+    req.params = { barcode: "test-barcode" };
+
     // Call the getProduct method of the controller
-    await productController.getProduct(req, res);
+    await productController.getProductByBarcode(req, res);
 
     // Check if the method was called with the correct barcode
     expect(retrieveProductByBarcodeSpy).toHaveBeenCalledWith(
@@ -70,17 +74,7 @@ describe("Product Controller", () => {
     // Setup the request with the allowdatabasewrites header set to true
     req.headers["allowdatabasewrites"] = "true";
 
-    // Mock product data returned by the API
-    const mockApiProduct: Product = {
-      name: "API Product",
-      calories_per_100g: 260,
-      protein_per_100g: 12,
-      carbohydrates_per_100g: 32,
-      fat_per_100g: 6,
-      barcode: "api-barcode",
-    };
-
-    req.body.barcode = "api-barcode";
+    req.params = { barcode: "test-barcode" };
 
     // Setup the ProductService spies
     jest
@@ -88,31 +82,31 @@ describe("Product Controller", () => {
       .mockResolvedValueOnce(null);
     jest
       .spyOn(ProductService.prototype, "retrieveProductFromAPI")
-      .mockResolvedValueOnce(mockApiProduct);
+      .mockResolvedValueOnce(mockProduct);
     const saveNewProductSpy = jest
-      .spyOn(ProductService.prototype, "saveNewProduct")
+      .spyOn(ProductService.prototype, "saveProduct")
       .mockResolvedValueOnce("UUID");
 
     // Call the getProduct method of the controller
-    await productController.getProduct(req, res);
+    await productController.getProductByBarcode(req, res);
 
     // Expect the controller to have tried retrieving the product from the database
     expect(
       ProductService.prototype.retrieveProductByBarcode
-    ).toHaveBeenCalledWith("api-barcode");
+    ).toHaveBeenCalledWith("test-barcode");
     // Expect the controller to have fetched product details from the API
     expect(
       ProductService.prototype.retrieveProductFromAPI
-    ).toHaveBeenCalledWith("api-barcode");
+    ).toHaveBeenCalledWith("test-barcode");
     // Expect the product to be saved in the database
-    expect(saveNewProductSpy).toHaveBeenCalledWith(mockApiProduct);
+    expect(saveNewProductSpy).toHaveBeenCalledWith(mockProduct);
 
     // Check if the response is correctly sent
-    expect(res.json).toHaveBeenCalledWith(mockApiProduct);
+    expect(res.json).toHaveBeenCalledWith(mockProduct);
   });
 
   test("should return 404 for a non-existent product", async () => {
-    req.body.barcode = "non-existent-barcode";
+    req.params = { barcode: "non-existent-barcode" };
 
     // Setup the ProductService spies to return null, simulating non-existent product
     jest
@@ -122,7 +116,7 @@ describe("Product Controller", () => {
       .spyOn(ProductService.prototype, "retrieveProductFromAPI")
       .mockResolvedValueOnce(null);
 
-    await productController.getProduct(req, res);
+    await productController.getProductByBarcode(req, res);
 
     // Expect the controller to have tried retrieving the product from the database and then the API
     expect(
@@ -143,7 +137,7 @@ describe("Product Controller", () => {
       .spyOn(ProductService.prototype, "retrieveProductByBarcode")
       .mockRejectedValueOnce(new Error("Internal server error"));
 
-    await productController.getProduct(req, res);
+    await productController.getProductByBarcode(req, res);
 
     // Check if the response is a 500 internal server error
     expect(res.status).toHaveBeenCalledWith(500);
