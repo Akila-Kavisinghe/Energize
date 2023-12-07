@@ -6,10 +6,10 @@ describe("calculateNutrition", () => {
     const product: Product = {
       productId: "someid",
       name: "Some product",
-      calories_per_100g: 200,
-      protein_per_100g: 10,
-      carbohydrates_per_100g: 20,
-      fat_per_100g: 5,
+      caloriesPer100g: 200,
+      proteinPer100g: 10,
+      carbohydratesPer100g: 20,
+      fatPer100g: 5,
       barcode: "somebarcode",
     };
 

@@ -2,8 +2,8 @@ export interface Product {
     productId: string;
     barcode: string;
     name: string;
-    calories_per_100g: number;
-    protein_per_100g: number;
-    carbohydrates_per_100g: number;
-    fat_per_100g: number;
+    caloriesPer100g: number;
+    proteinPer100g: number;
+    carbohydratesPer100g: number;
+    fatPer100g: number;
 }

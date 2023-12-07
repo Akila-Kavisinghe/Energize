@@ -44,10 +44,10 @@ describe('ProductService', () => {
       expect(product).toEqual({
         name: 'Test Product',
         productId: "specific-uuid" + "-" + mockBarcode,
-        calories_per_100g: 250,
-        protein_per_100g: 10,
-        carbohydrates_per_100g: 30,
-        fat_per_100g: 5,
+        caloriesPer100g: 250,
+        proteinPer100g: 10,
+        carbohydratesPer100g: 30,
+        fatPer100g: 5,
         barcode: mockBarcode
       });
     });
@@ -58,10 +58,10 @@ describe('ProductService', () => {
     const mockProduct = {
       productId: 'test-product-id',
       name: 'Test Product',
-      calories_per_100g: 250,
-      protein_per_100g: 10,
-      carbohydrates_per_100g: 30,
-      fat_per_100g: 5,
+      caloriesPer100g: 250,
+      proteinPer100g: 10,
+      carbohydratesPer100g: 30,
+      fatPer100g: 5,
       barcode: mockBarcode
     };
 
@@ -78,10 +78,10 @@ describe('ProductService', () => {
     const mockProduct = {
       productId: 'test-product-id',
       name: 'New Product',
-      calories_per_100g: 260,
-      protein_per_100g: 11,
-      carbohydrates_per_100g: 31,
-      fat_per_100g: 6,
+      caloriesPer100g: 260,
+      proteinPer100g: 11,
+      carbohydratesPer100g: 31,
+      fatPer100g: 6,
       barcode: 'new-barcode'
     };
 

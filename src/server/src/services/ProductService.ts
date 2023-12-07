@@ -21,10 +21,10 @@ export class ProductService {
     return {
       productId: uuidv4() + "-" + barcode,
       name: product.product_name,
-      calories_per_100g: product.nutriments["energy-kcal_100g"],
-      protein_per_100g: product.nutriments.proteins_100g,
-      carbohydrates_per_100g: product.nutriments.carbohydrates_100g,
-      fat_per_100g: product.nutriments.fat_100g,
+      caloriesPer100g: product.nutriments["energy-kcal_100g"],
+      proteinPer100g: product.nutriments.proteins_100g,
+      carbohydratesPer100g: product.nutriments.carbohydrates_100g,
+      fatPer100g: product.nutriments.fat_100g,
       barcode: barcode,
     };
   }

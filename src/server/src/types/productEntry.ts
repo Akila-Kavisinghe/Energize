@@ -1,7 +1,7 @@
 export interface ProductEntry {
     productEntryId: string;
     userId: string;
-    dateConsumed: Date;
+    dateConsumed: string;
     productId: string;
     name: string;
     grams: number;

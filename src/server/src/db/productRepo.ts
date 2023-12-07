@@ -9,14 +9,14 @@ async function queryProductByBarcode(barcode: string): Promise<Product | null> {
         "SELECT product_id, name, calories_per_100g, protein_per_100g, carbohydrates_per_100g, fat_per_100g, barcode FROM products WHERE barcode = ?";
       pool.query(query, [barcode], (err, results: any) => {
         if (results.length > 0) {
-          const product: Product = results[0];
+          const product = results[0];
           resolve({
-            productId: product.productId,
+            productId: product.product_id,
             name: product.name,
-            calories_per_100g: product.calories_per_100g,
-            protein_per_100g: product.protein_per_100g,
-            carbohydrates_per_100g: product.carbohydrates_per_100g,
-            fat_per_100g: product.fat_per_100g,
+            caloriesPer100g: product.calories_per_100g,
+            proteinPer100g: product.protein_per_100g,
+            carbohydratesPer100g: product.carbohydrates_per_100g,
+            fatPer100g: product.fat_per_100g,
             barcode
           });
         } else {
@@ -38,10 +38,10 @@ async function addProductToDb(product: Product): Promise<String> {
       const values = [
         product.productId,
         product.name,
-        product.protein_per_100g,
-        product.carbohydrates_per_100g,
-        product.fat_per_100g,
-        product.calories_per_100g,
+        product.proteinPer100g,
+        product.carbohydratesPer100g,
+        product.fatPer100g,
+        product.caloriesPer100g,
         product.barcode,
       ];
 
@@ -105,7 +105,7 @@ async function queryProductEntries(
 async function addProductEntryToDb(productEntry: ProductEntry): Promise<String> {
   return new Promise((resolve, reject) => {
     try {
-      const query = `INSERT INTO product_entries (product_entry_id, user_id date_consumed, product_id, name, grams, calories, protein, carbs, fat) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const query = `INSERT INTO product_entries (product_entry_id, user_id, date_consumed, product_id, name, grams, calories, protein, carbs, fat) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
       const values = [
         productEntry.productEntryId,

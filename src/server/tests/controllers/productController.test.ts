@@ -19,10 +19,10 @@ describe("Product Controller", () => {
     mockProduct = {
       productId: "test-product-id",
       name: "Test Product",
-      calories_per_100g: 250,
-      protein_per_100g: 10,
-      carbohydrates_per_100g: 30,
-      fat_per_100g: 5,
+      caloriesPer100g: 250,
+      proteinPer100g: 10,
+      carbohydratesPer100g: 30,
+      fatPer100g: 5,
       barcode: "test-barcode",
     };
 
@@ -61,10 +61,10 @@ describe("Product Controller", () => {
     expect(jsonResponse).toEqual(
       expect.objectContaining({
         name: mockProduct.name,
-        calories_per_100g: mockProduct.calories_per_100g,
-        protein_per_100g: mockProduct.protein_per_100g,
-        carbohydrates_per_100g: mockProduct.carbohydrates_per_100g,
-        fat_per_100g: mockProduct.fat_per_100g,
+        caloriesPer100g: mockProduct.caloriesPer100g,
+        proteinPer100g: mockProduct.proteinPer100g,
+        carbohydratesPer100g: mockProduct.carbohydratesPer100g,
+        fatPer100g: mockProduct.fatPer100g,
         barcode: mockProduct.barcode,
       })
     );
