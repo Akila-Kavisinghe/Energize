@@ -33,7 +33,7 @@ async function queryProductByBarcode(barcode: string): Promise<Product | null> {
 async function addProductToDb(product: Product): Promise<String> {
   return new Promise((resolve, reject) => {
     try {
-      const query = `INSERT INTO products (product_id, name, protein_per_100g, carbohydrates_per_100g, fat_per_100g, calories_per_100g, barcode) VALUES (?, ?, ?, ?, ?, ?)`;
+      const query = `INSERT INTO products (product_id, name, protein_per_100g, carbohydrates_per_100g, fat_per_100g, calories_per_100g, barcode) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
       const values = [
         product.productId,
